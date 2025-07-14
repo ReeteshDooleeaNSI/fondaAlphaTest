@@ -27,6 +27,7 @@ export default function EndPage({ message }: EndPageProps) {
         </div>
         {/* Email Form Content */}
         <div className="p-8 text-center">
+          {/* Test comment */}
           <h3 className="text-xl font-bold mb-4 text-blue-700">Merci d'avoir complété votre auto-l'évaluation !</h3>
           <p className="mb-6 text-gray-700">Si vous souhaitez recevoir vos résultats et des ressources d'apprentissage personnalisées, veuillez entrer vos informations de contact ci-dessous. Une réponse:</p>
           {submitted ? (

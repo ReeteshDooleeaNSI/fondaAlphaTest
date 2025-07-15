@@ -12,7 +12,7 @@ jobs:
   BuildAndDeploy:
     runner: Compute
     image: NodeImage
-    cwd: /
+    cwd: ./
     steps:
       - npm install -g zcatalyst-cli
       - rm -rf node_modules package-lock.json

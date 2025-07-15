@@ -18,7 +18,7 @@ jobs:
       - npm install
       - npm run build
       - >-
-        catalyst deploy client --project << env.PROJECT_NAME
+        catalyst deploy --project << env.PROJECT_NAME
         >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
 
 stages:

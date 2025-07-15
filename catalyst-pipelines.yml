@@ -1,0 +1,29 @@
+version: 1
+runners:
+  Compute:
+    config-id: 1
+images:
+  NodeImage:
+    image: node:18
+    registry: https://registry.npmjs.org/
+    auth:
+      username: << env.NPM_REGISTRY_USERNAME >>
+      password: << env.NPM_REGISTRY_PASSWORD >>
+jobs:
+  BuildAndDeploy:
+    runner: Compute
+    image: NodeImage
+    cwd: /
+    steps:
+      - npm install -g zcatalyst-cli
+      - npm install
+      - npm run build
+      - >-
+        catalyst deploy client --build-path dist --project << env.PROJECT_NAME
+        >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
+
+stages:
+  - name: ReactDeployment
+    image: NodeImage
+    jobs:
+      - BuildAndDeploy

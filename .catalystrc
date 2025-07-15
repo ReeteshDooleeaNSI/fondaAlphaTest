@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 1,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "2075000000083074",
+      "name": "FondaRDTest",
+      "domain": {
+        "id": "10101794761",
+        "name": "fondardtest-829544944.development"
+      },
+      "timezone": "America/Toronto",
+      "env": [
+        {
+          "idx": 1,
+          "id": "829544944",
+          "name": "Development",
+          "type": 3
+        }
+      ]
+    }
+  ]
+}

@@ -5,7 +5,6 @@ runners:
 images:
   NodeImage:
     image: node:18
-    registry: https://registry.npmjs.org/
     auth:
       username: << env.NPM_REGISTRY_USERNAME >>
       password: << env.NPM_REGISTRY_PASSWORD >>
@@ -16,6 +15,7 @@ jobs:
     cwd: /
     steps:
       - npm install -g zcatalyst-cli
+      - rm -rf node_modules package-lock.json
       - npm install
       - npm run build
       - >-

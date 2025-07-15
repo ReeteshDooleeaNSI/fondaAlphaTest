@@ -1,0 +1,37 @@
+version: 1
+
+runners:
+  Machine:
+    config-id: 2
+
+images:
+  DeployMachine:
+    image: ubuntu
+
+jobs:
+  Build_React_Deploy:
+    steps:
+      # install Node.js 18
+      - apt-get update
+      - curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+      - apt-get install -y nodejs
+
+      # verify node & npm versions
+      - node -v
+      - npm -v
+
+      # install Catalyst CLI
+      - npm install -g zcatalyst-cli
+
+      # install dependencies and build React project
+      - npm install
+      - npm run build
+
+      # deploy to Catalyst as client app
+      - catalyst deploy client --build-path dist --project << env.PROJECT_NAME >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
+
+stages:
+  - name: build-and-deploy
+    image: DeployMachine
+    jobs:
+      - Build_React_Deploy

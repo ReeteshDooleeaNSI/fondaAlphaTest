@@ -17,6 +17,7 @@ jobs:
       - rm -rf node_modules package-lock.json
       - npm install
       - npm run build
+      - cp client-package.json dist/
       - >-
         catalyst deploy --project << env.PROJECT_NAME
         >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
